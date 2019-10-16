@@ -1,0 +1,172 @@
+<html>
+    <head>
+        <style>
+        
+        table {
+            overflow:hidden;
+        }
+
+        tr, td{
+            border: 3px solid red;
+            height: 40px;
+            width: 50px;
+    
+        }
+
+        td, th{
+            position: relative;
+        }
+        
+        /* hoveren over elk vakje apart
+        td:hover{
+            background-color: gold;
+        } */
+       
+
+        td:hover::after,
+        th:hover::after {
+            content: '';  
+            height: 10000px;
+            left: 0;
+            position: absolute;  
+            top: -5000px;
+            width: 100%;
+            z-index: -1;
+            background-color: gold;
+        }
+
+        </style>
+
+        <script>
+
+        var aantalKlikken = 0;   
+
+            function actie(hetElem){
+                var table = document.getElementById("table1");
+                var kolomIndex = hetElem.cellIndex;
+                console.log(kolomIndex);
+                var kolomNaam = hetElem.className;
+                console.log(kolomNaam);
+                var alleCellenInKolom = document.getElementsByClassName(kolomNaam);
+                console.log(alleCellenInKolom);
+                
+
+                for (var x = table.rows.length-1; x>=0; x--){
+                
+                    if (table.rows[x].cells[kolomIndex].style.backgroundColor == 'red' | table.rows[x].cells[kolomIndex].style.backgroundColor == 'blue') {
+                    } else if (aantalKlikken % 2 == 0) {
+                        table.rows[x].cells[kolomIndex].style.backgroundColor = 'blue';
+                        aantalKlikken++;
+                        break;
+                    } else { 
+                        table.rows[x].cells[kolomIndex].style.backgroundColor = 'red';
+                        aantalKlikken++;
+                        break;
+                    }
+                        
+                }
+        }
+
+                
+                /*var bijnaOndersteCelInKolom = alleCellenInKolom[4];
+
+                for( var x =0; x<alleCellenInKolom.length; x++){
+                    
+                    if (aantalKlikken == 1){
+                        bijnaOndersteCelInKolom.style.backgroundColor = 'red';
+                        aantalKlikken++;
+                        break;
+                    } else {
+                        ondersteCelInKolom.style.backgroundColor = 'red';
+                        aantalKlikken++;
+                        break;
+                    }
+                    
+                }
+                console.log(aantalKlikken); */
+            
+                           
+            /*function steenVallen(){
+                for (i=0; i<x.rows.length; i++){
+                    var tr = document.createElement("tr");
+                    console.log(row);
+                        for (j =0; j< x.rows[i].cells.length; j++){
+                            let td = document.createElement("td");
+                            console.log(td);
+
+                            
+                    }
+                
+                }
+            }*/
+            
+            
+            
+
+            
+
+        </script>
+    </head>
+
+    <body>
+        <table id="table1"> 
+            <tr>
+                <td class= "col1" onclick="actie(this)"> </td>
+                <td class= "col2" onclick="actie(this)"> </td>
+                <td class= "col3" onclick="actie(this)"> </td>
+                <td class= "col4" onclick="actie(this)"> </td>
+                <td class= "col5" onclick="actie(this)"></td>
+                <td class= "col6" onclick="actie(this)"></td>
+                <td class= "col7" onclick="actie(this)"></td>
+            </tr>
+            <tr>
+                <td class= "col1" onclick="actie(this)"></td>
+                <td class= "col2" onclick="actie(this)"></td>
+                <td class= "col3" onclick="actie(this)"></td>
+                <td class= "col4" onclick="actie(this)"></td>
+                <td class= "col5" onclick="actie(this)"></td>
+                <td class= "col6" onclick="actie(this)"></td>
+                <td class= "col7" onclick="actie(this)"></td>
+            </tr>
+            <tr>
+                <td class= "col1" onclick="actie(this)"></td>
+                <td class= "col2" onclick="actie(this)"></td>
+                <td class= "col3" onclick="actie(this)"></td>
+                <td class= "col4" onclick="actie(this)"></td>
+                <td class= "col5" onclick="actie(this)"></td>
+                <td class= "col6" onclick="actie(this)"></td>
+                <td class= "col7" onclick="actie(this)"></td>
+            </tr>
+            <tr>
+                <td class= "col1" onclick="actie(this)"></td>
+                <td class= "col2" onclick="actie(this)"></td>
+                <td class= "col3" onclick="actie(this)"></td>
+                <td class= "col4" onclick="actie(this)"></td>
+                <td class= "col5" onclick="actie(this)"></td>
+                <td class= "col6" onclick="actie(this)"></td>
+                <td class= "col7" onclick="actie(this)"></td>
+            </tr>
+            <tr>
+                <td class= "col1" onclick="actie(this)"></td>
+                <td class= "col2" onclick="actie(this)"></td>
+                <td class= "col3" onclick="actie(this)"></td>
+                <td class= "col4" onclick="actie(this)"></td>
+                <td class= "col5" onclick="actie(this)"></td>
+                <td class= "col6" onclick="actie(this)"></td>
+                <td class= "col7" onclick="actie(this)"></td>
+            </tr>
+            <tr>
+                <td class= "col1" onclick="actie(this)"></td>
+                <td class= "col2" onclick="actie(this)"></td>
+                <td class= "col3" onclick="actie(this)"></td>
+                <td class= "col4" onclick="actie(this)"></td>
+                <td class= "col5" onclick="actie(this)"></td>
+                <td class= "col6" onclick="actie(this)"></td>
+                <td class= "col7" onclick="actie(this)"></td>
+            </tr>
+
+
+        </table>
+        <div> </div>
+    </body>
+</html>
