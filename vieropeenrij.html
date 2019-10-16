@@ -36,12 +36,8 @@
         <script>
 
         var aantalKlikken = 0;
-        var veldIndeling = [["", "", "", "", "", "", ""],
-                            ["", "", "", "", "", "", ""],
-                            ["", "", "", "", "", "", ""],
-                            ["", "", "", "", "", "", ""],
-                            ["", "", "", "", "", "", ""],
-                            ["", "", "", "", "", "", ""]];
+        var veldIndeling = ["", "", "", "", "", "", ""]
+                            
 
 
              
@@ -105,18 +101,18 @@
                 for (x = table.rows.length-1; x>=0; x--){
                     
                     if (table.rows[x].cells[kolomIndex].style.backgroundColor == 'red' | table.rows[x].cells[kolomIndex].style.backgroundColor == 'yellow') {
-                        continue;
+                        
                     } else if (aantalKlikken % 2 == 0) {
                         table.rows[x].cells[kolomIndex].style.backgroundColor = 'yellow';
                         aantalKlikken++;
                         veldIndeling[kolomIndex] = veldIndeling[kolomIndex] + "y";
-                        veldIndeling[x][kolomIndex] = veldIndeling[x][kolomIndex] + "y";
+                        // veldIndeling[x][kolomIndex] = veldIndeling[x][kolomIndex] + "y";
                         break;
                     } else { 
                         table.rows[x].cells[kolomIndex].style.backgroundColor = 'red';
                         aantalKlikken++;
                         veldIndeling[kolomIndex] = veldIndeling[kolomIndex] + "r";
-                        veldIndeling[x][kolomIndex] = veldIndeling[x][kolomIndex] + "r";
+                        // veldIndeling[x][kolomIndex] = veldIndeling[x][kolomIndex] + "r";
                         break;
                     }
 
@@ -150,7 +146,7 @@
                         }
                     }
 
-                rijenchecker: for (var k=0; k<veldIndeling[x].length; k++){
+                /* rijenchecker: for (var k=0; k<veldIndeling[x].length; k++){
                     if (veldIndeling[x][k].length==4){
                         if (veldIndeling.find(a => a.includes("yyyy"))){
                             if (document.getElementById("naam1").value){
@@ -172,7 +168,7 @@
                             }
                             break rijenchecker;
                         }
-                    }
+                    } */
 
                     console.log(veldIndeling);
                     
