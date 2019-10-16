@@ -36,7 +36,16 @@
         <script>
 
         var aantalKlikken = 0;
-            
+        var veldIndeling = [["", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", ""],
+                            ["", "", "", "", "", "", ""]];
+
+
+             
+             
             function spelstart(){
                 if (document.getElementById("naam1").value){
                     var speler1 = document.getElementById("naam1").value;
@@ -85,8 +94,10 @@
             }
         
             function actie(hetElem){
+                                                                
                 var table = document.getElementById("table1");
                 var kolomIndex = hetElem.cellIndex;
+                console.log(kolomIndex);
                 var alleCellenInKolom = document.getElementsByClassName(kolomIndex);
                 var x;
                 
@@ -94,34 +105,89 @@
                 for (x = table.rows.length-1; x>=0; x--){
                     
                     if (table.rows[x].cells[kolomIndex].style.backgroundColor == 'red' | table.rows[x].cells[kolomIndex].style.backgroundColor == 'yellow') {
-        
+                        continue;
                     } else if (aantalKlikken % 2 == 0) {
                         table.rows[x].cells[kolomIndex].style.backgroundColor = 'yellow';
                         aantalKlikken++;
+                        veldIndeling[kolomIndex] = veldIndeling[kolomIndex] + "y";
+                        veldIndeling[x][kolomIndex] = veldIndeling[x][kolomIndex] + "y";
                         break;
                     } else { 
                         table.rows[x].cells[kolomIndex].style.backgroundColor = 'red';
                         aantalKlikken++;
+                        veldIndeling[kolomIndex] = veldIndeling[kolomIndex] + "r";
+                        veldIndeling[x][kolomIndex] = veldIndeling[x][kolomIndex] + "r";
                         break;
                     }
 
                     if (x==0){
-                        alert("Deze rij is al vol, klik op een andere rij");
-                        break;
+                    alert("Deze rij is al vol, klik op een andere rij");
+                    break;
+                    }
+                }
+
+                kolomchecker: for (var k=0; k<veldIndeling.length; k++){
+                    if (veldIndeling[k].length==4){
+                        if (veldIndeling.find(a => a.includes("yyyy"))){
+                            if (document.getElementById("naam1").value){
+                                var speler1 = document.getElementById("naam1").value;
+                                document.getElementById("winnaar").innerHTML = speler1 + " heeft gewonnen, gefeliciteerd!";
+                            } else {
+                                document.getElementById("winnaar").innerHTML = "Speler 1 heeft gewonnen, gefeliciteerd!";
+                            }
+                            break kolomchecker;
+                        }
+                            
+                            
+                        } else if (veldIndeling.find(a => a.includes("rrrr"))) {
+                            if (document.getElementById("naam2").value){
+                                var speler2 = document.getElementById("naam2").value;
+                                document.getElementById("winnaar").innerHTML = speler2 + " heeft gewonnen, gefeliciteerd!";
+                            } else {
+                                document.getElementById("winnaar").innerHTML = "Speler 2 heeft gewonnen, gefeliciteerd!";
+                            }
+                            break kolomchecker;
+                        }
                     }
 
-                   
-                   
-            
-                        
-                }
-                if (table.rows[x].aantalKlikken ==6 ){
-                    alert("Deze rij is al vol");
-                } 
-            }          
-            
+                rijenchecker: for (var k=0; k<veldIndeling[x].length; k++){
+                    if (veldIndeling[x][k].length==4){
+                        if (veldIndeling.find(a => a.includes("yyyy"))){
+                            if (document.getElementById("naam1").value){
+                                var speler1 = document.getElementById("naam1").value;
+                                document.getElementById("winnaar").innerHTML = speler1 + " heeft gewonnen, gefeliciteerd!";
+                            } else {
+                                document.getElementById("winnaar").innerHTML = "Speler 1 heeft gewonnen, gefeliciteerd!";
+                            }
+                            break rijenchecker;
+                        }
+                            
+                            
+                        } else if (veldIndeling.find(a => a.includes("rrrr"))) {
+                            if (document.getElementById("naam2").value){
+                                var speler2 = document.getElementById("naam2").value;
+                                document.getElementById("winnaar").innerHTML = speler2 + " heeft gewonnen, gefeliciteerd!";
+                            } else {
+                                document.getElementById("winnaar").innerHTML = "Speler 2 heeft gewonnen, gefeliciteerd!";
+                            }
+                            break rijenchecker;
+                        }
+                    }
 
-            
+                    console.log(veldIndeling);
+                    
+
+
+            }
+
+                
+
+                
+        
+
+                
+               
+        
 
         </script>
     </head>
@@ -140,7 +206,7 @@
 
         <table id="table1"> 
             <tr>
-                <td class= "col1" onmouseover = "hover(this)" onmouseout="normal(this)" onclick="actie(this)"> </td>
+                <td class= "col1" onclick="actie(this)"> </td>
                 <td class= "col2" onclick="actie(this)"> </td>
                 <td class= "col3" onclick="actie(this)"> </td>
                 <td class= "col4" onclick="actie(this)"> </td>
@@ -194,7 +260,7 @@
                 <td class= "col7" onclick="actie(this)"></td>
             </tr>
         </table>
-        <h4 id="rijisvol"> </h4>
+        <h4 id= "winnaar">  </h4>
 
         
     </body>
